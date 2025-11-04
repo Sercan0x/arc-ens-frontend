@@ -58,49 +58,106 @@ export default function Home() {
   }
 
   return (
-    <div style={{ fontFamily: "sans-serif", textAlign: "center", marginTop: 50 }}>
-      <h1>🪪 ARC Name Service (Testnet)</h1>
+    <div
+      style={{
+        fontFamily: "Inter, sans-serif",
+        textAlign: "center",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundImage: "url('https://i.ibb.co/HpqV3ZKx/Arc.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        color: "white",
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+          padding: "40px 60px",
+          borderRadius: "16px",
+          boxShadow: "0 4px 30px rgba(0, 0, 0, 0.5)",
+          backdropFilter: "blur(10px)",
+          maxWidth: "400px",
+          width: "90%",
+        }}
+      >
+        <h1 style={{ marginBottom: 20 }}>🪪 ARC Name Service</h1>
+        <h3 style={{ marginBottom: 30 }}>Testnet (.arc)</h3>
 
-      <div style={{ marginTop: 30 }}>
-        <h3>Register a Name (.arc)</h3>
-        <input
-          placeholder="example: hakan"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          style={{ padding: 8, width: 220 }}
-        />
-        <br />
-        <button
-          onClick={registerName}
-          disabled={loading || !name}
-          style={{ marginTop: 10 }}
-        >
-          {loading ? "Processing..." : "Register"}
-        </button>
-      </div>
+        <div style={{ marginBottom: 40 }}>
+          <h3>Register a Name</h3>
+          <input
+            placeholder="example: hakan"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            style={{
+              padding: 10,
+              width: "100%",
+              borderRadius: 8,
+              border: "1px solid #ccc",
+              marginTop: 8,
+            }}
+          />
+          <button
+            onClick={registerName}
+            disabled={loading || !name}
+            style={{
+              marginTop: 12,
+              padding: "10px 24px",
+              borderRadius: 8,
+              border: "none",
+              backgroundColor: "#3b82f6",
+              color: "white",
+              cursor: "pointer",
+              width: "100%",
+            }}
+          >
+            {loading ? "Processing..." : "Register"}
+          </button>
+        </div>
 
-      <div style={{ marginTop: 50 }}>
-        <h3>Resolve a Name</h3>
-        <input
-          placeholder="example: hakan"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          style={{ padding: 8, width: 220 }}
-        />
-        <br />
-        <button
-          onClick={resolveName}
-          disabled={loading || !query}
-          style={{ marginTop: 10 }}
-        >
-          {loading ? "Processing..." : "Resolve"}
-        </button>
+        <div>
+          <h3>Resolve a Name</h3>
+          <input
+            placeholder="example: hakan"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            style={{
+              padding: 10,
+              width: "100%",
+              borderRadius: 8,
+              border: "1px solid #ccc",
+              marginTop: 8,
+            }}
+          />
+          <button
+            onClick={resolveName}
+            disabled={loading || !query}
+            style={{
+              marginTop: 12,
+              padding: "10px 24px",
+              borderRadius: 8,
+              border: "none",
+              backgroundColor: "#22c55e",
+              color: "white",
+              cursor: "pointer",
+              width: "100%",
+            }}
+          >
+            {loading ? "Processing..." : "Resolve"}
+          </button>
 
-        {result && (
-          <p style={{ marginTop: 20 }}>
-            <b>{query}.arc</b> address: <code>{result}</code>
-          </p>
-        )}
+          {result && (
+            <p style={{ marginTop: 20, wordBreak: "break-all" }}>
+              <b>{query}.arc</b> address: <code>{result}</code>
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
